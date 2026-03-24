@@ -1,6 +1,4 @@
-﻿using BizSecureDemo_22180126.Data;
-using BizSecureDemo_22180126.Models;
-using BizSecureDemo_22180126.ViewModels;
+﻿using Microsoft.AspNetCore.RateLimiting;
 using BizSecureDemo_22180126.Data;
 using BizSecureDemo_22180126.Models;
 using BizSecureDemo_22180126.ViewModels;
@@ -39,6 +37,8 @@ public class AccountController : Controller
         await _db.SaveChangesAsync();
         return RedirectToAction("Login");
     }
+
+    [EnableRateLimiting("login")]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Login(LoginVm vm)
