@@ -15,14 +15,17 @@
 				@if (User.Identity?.IsAuthenticated ?? false)
 				{
 					<a class="btn btn-outline-light btn-sm" asp-controller="Home" aspaction="Index">Landing</a>
+					<a class="btn btn-outline-light btn-sm" asp-controller="Search" aspaction="Index">Search</a>
 					<form asp-controller="Account" asp-action="Logout" method="post" class="dinline">
 						@Html.AntiForgeryToken()
 						<button type="submit" class="btn btn-outline-light btn-sm">Logout</button>
 					</form>
+
 				}
 				else
 				{
 					<a class="btn btn-outline-light btn-sm" asp-controller="Account" aspaction="Login">Login</a>
+					
 				}
 			</div>
 		</div>

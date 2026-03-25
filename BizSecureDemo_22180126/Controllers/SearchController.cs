@@ -16,13 +16,27 @@ public class SearchController : Controller
     {
         return View();
     }
+
+    // Vulnerable to SQL injection
+    //[HttpPost]
+    //public async Task<IActionResult> Results(string keyword)
+    //{
+    //    var sql = $"SELECT * FROM Orders WHERE Title LIKE '%{keyword}%'";
+    //    var results = await _db.Orders
+    //        .FromSqlRaw(sql)
+    //        .ToListAsync();
+    //    return View(results);
+    //}
+
     [HttpPost]
     public async Task<IActionResult> Results(string keyword)
     {
-        var sql = $"SELECT * FROM Orders WHERE Title LIKE '%{keyword}%'";
+        var sql = "SELECT * FROM Orders WHERE Title LIKE @keyword";
+        var param = new SqlParameter("@keyword", $"%{keyword}%");
         var results = await _db.Orders
-            .FromSqlRaw(sql)
+            .FromSqlRaw(sql, param)
             .ToListAsync();
         return View(results);
     }
+
 }
