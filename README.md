@@ -2,7 +2,7 @@
 
 ## Description
 Hello,
-This repository demonstrates my work on the first four tasks from the seminars. As can be seen, all the commented issues (IDOR, XSS and Brute force attack) are now resolved.
+This repository demonstrates my work on the first five tasks from the seminars. As can be seen, all the commented issues (IDOR, XSS, Brute force attack, SQL injection) are now resolved.
 
 
 
